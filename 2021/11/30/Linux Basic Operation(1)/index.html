@@ -1,0 +1,403 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux基本操作（1） | De1p Blog</title><meta name="keywords" content="Linux,Study"><meta name="author" content="De1p"><meta name="copyright" content="De1p"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文章作为信息安全赛项培训系列文章的教学开始的第一篇文章，在开始对本系列文章学习前，建议您先查看信息安全赛项培训-环境搭建与配置文章，确保在实验环境完备的情况下，一边操作一边阅读使用本文章。在实验过程中如发现文章知识性错误，亦或是您遇到了什么困难，可以联系我，在博客的主页有我个人联系方式。 Basic 在linux中，大多数命令都有帮助文档，当您不知道这个命令怎么使用，亦或是您忘了某个参数时，您可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基本操作（1）">
+<meta property="og:url" content="http://example.com/2021/11/30/Linux%20Basic%20Operation(1)/index.html">
+<meta property="og:site_name" content="De1p Blog">
+<meta property="og:description" content="本文章作为信息安全赛项培训系列文章的教学开始的第一篇文章，在开始对本系列文章学习前，建议您先查看信息安全赛项培训-环境搭建与配置文章，确保在实验环境完备的情况下，一边操作一边阅读使用本文章。在实验过程中如发现文章知识性错误，亦或是您遇到了什么困难，可以联系我，在博客的主页有我个人联系方式。 Basic 在linux中，大多数命令都有帮助文档，当您不知道这个命令怎么使用，亦或是您忘了某个参数时，您可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/Linux%20Basic.jpg">
+<meta property="article:published_time" content="2021-11-30T02:05:05.000Z">
+<meta property="article:modified_time" content="2021-11-30T03:31:38.629Z">
+<meta property="article:author" content="De1p">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Study">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/Linux%20Basic.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/11/30/Linux%20Basic%20Operation(1)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: De1p","link":"链接: ","source":"来源: De1p Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux基本操作（1）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-30 11:31:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div><div class="menus_item"><a class="site-page" href="/about"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Linux%20Basic.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">De1p Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div><div class="menus_item"><a class="site-page" href="/about"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux基本操作（1）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-30T02:05:05.000Z" title="发表于 2021-11-30 10:05:05">2021-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-30T03:31:38.629Z" title="更新于 2021-11-30 11:31:38">2021-11-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%F0%9F%93%96%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E8%B5%9B%E9%A1%B9%E5%9F%B9%E8%AE%AD-Linux/">📖信息安全赛项培训-Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux基本操作（1）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>本文章作为信息安全赛项培训系列文章的教学开始的第一篇文章，在开始对本系列文章学习前，建议您先查看信息安全赛项培训-环境搭建与配置文章，确保在实验环境完备的情况下，一边操作一边阅读使用本文章。在实验过程中如发现文章知识性错误，亦或是您遇到了什么困难，可以联系我，在博客的主页有我个人联系方式。</p>
+<h1 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h1><hr>
+<p>在linux中，大多数命令都有帮助文档，当您不知道这个命令怎么使用，亦或是您忘了某个参数时，您可以尝试–help参数以查看帮助文档</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ 需要查询的命令 --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<p>如果您遇到无法执行指令时，请先查看您当前是否处于非root用户下，您可以查看命令指示符是否为#，亦或者您可以使用whoami命令查看当前的用户名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ whoami</span><br></pre></td></tr></table></figure>
+
+<p>如果您处于非root用户下时，您可以使用su命令来进行切换root用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ su root</span><br></pre></td></tr></table></figure>
+
+<h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><h2 id="一-基本操作语句介绍"><a href="#一-基本操作语句介绍" class="headerlink" title="一.基本操作语句介绍"></a>一.基本操作语句介绍</h2><h3 id="操作路径指令"><a href="#操作路径指令" class="headerlink" title="操作路径指令"></a>操作路径指令</h3><p>Linux下目录基础知识</p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>~</td>
+<td>用户目录</td>
+</tr>
+<tr>
+<td>/</td>
+<td>根目录</td>
+</tr>
+<tr>
+<td>./</td>
+<td>当前目录</td>
+</tr>
+<tr>
+<td>./</td>
+<td>上一级目录</td>
+</tr>
+<tr>
+<td>*</td>
+<td>表所有</td>
+</tr>
+</tbody></table>
+<h4 id="移动路径指令-cd"><a href="#移动路径指令-cd" class="headerlink" title="移动路径指令(cd)"></a>移动路径指令(cd)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> <span class="string">&#x27;目标路径&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看路径下文件指令-ls"><a href="#查看路径下文件指令-ls" class="headerlink" title="查看路径下文件指令(ls)"></a>查看路径下文件指令(ls)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">$ ls <span class="string">&#x27;目标路径&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-l</td>
+<td>列出目录下子目录和文件的详细信息</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>列出目录下子目录和文件的详细信息</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>按最后修改时间排序</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>按文件大小排序（大写的S）</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>排序时按倒序</td>
+</tr>
+</tbody></table>
+<h4 id="创建文件指令-touch"><a href="#创建文件指令-touch" class="headerlink" title="创建文件指令(touch)"></a>创建文件指令(touch)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch <span class="string">&#x27;文件名&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>只修改文件的access(访问)时间</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>或–no-create 不创建不存在的文件</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>使用指定的日期时间，而非现在的时间</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>指修改Modify(修改)时间,而不修改access(访问)时间</td>
+</tr>
+<tr>
+<td>-r file</td>
+<td>使用指定file文件的时间戳（access，modify）更新文件的时间戳（access，modify）</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>将时间修改为参数指定的日期，如：07081556代表7月8号15点56分</td>
+</tr>
+</tbody></table>
+<h4 id="创建文件夹指令-mkdir"><a href="#创建文件夹指令-mkdir" class="headerlink" title="创建文件夹指令(mkdir)"></a>创建文件夹指令(mkdir)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir <span class="string">&quot;目录名&quot;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-m</td>
+<td>模式，设定权限&lt;模式&gt; (类似 chmod)，而不是 rwxrwxrwx 减 umask</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录;</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>每次创建新目录都显示信息</td>
+</tr>
+</tbody></table>
+<h3 id="文件操作指令"><a href="#文件操作指令" class="headerlink" title="文件操作指令"></a>文件操作指令</h3><h5 id="关于路径的基础知识"><a href="#关于路径的基础知识" class="headerlink" title="关于路径的基础知识"></a>关于路径的基础知识</h5><p>绝对路径</p>
+<p><code>绝对路径是从linux最底层的根(/)开始算的。</code></p>
+<p>相对路径</p>
+<p><code>相对路径是直接输入当前路径下的文件夹或者以 . 或 .. 开始算的，.表示用户当前操作所处的位置，.. 表示上一级目录。</code></p>
+<p>举个例子</p>
+<p><code>/home/oracle 这个路径就是绝对路径</code><br><code>./home/oracle 这个就是相对路径，例如现在在/test路径下，此条路径换算成绝对路径为/test/home/oracle</code><br><code>../home/oracel 这个也是相对路径，例如现在在/test路径下，此条路径换算成绝对路径为：/home/oracel</code><br><code>注意后面两个的对比，..是回到上一级然后在往后算。</code></p>
+<p>您可以使用pwd命令查看当前所在的绝对路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="移动文件指令-mv"><a href="#移动文件指令-mv" class="headerlink" title="移动文件指令(mv)"></a>移动文件指令(mv)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv &#x27;目标文件路径&#x27;(需要移动的文件/文件夹) &#x27;目标位置路径&#x27;(移动到的位置)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b</td>
+<td>若需覆盖文件，则覆盖前先行备份</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>强制的意思，如果目标文件已经存在，不会询问而直接覆盖</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>若目标文件 (destination) 已经存在时，就会询问是否覆盖</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>若目标文件已经存在，且 source 比较新，才会更新(update)</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后</td>
+</tr>
+</tbody></table>
+<p>执行操作时可能会遇到需要移动文件夹中的部分相同后缀文件，此时可以使用*</p>
+<p>例如想移动文件夹中以txt为后缀的所有文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv /usr/lib/*.txt /zone</span><br></pre></td></tr></table></figure>
+
+<h4 id="复制文件指令-cp"><a href="#复制文件指令-cp" class="headerlink" title="复制文件指令(cp)"></a>复制文件指令(cp)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp <span class="string">&#x27;目标文件路径&#x27;</span>(需要复制的文件/文件夹) <span class="string">&#x27;目标位置路径&#x27;</span>(复制到的位置)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>复制时保留链接。这里所说的链接相当于 Windows 系统中的快捷方式</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>覆盖已经存在的目标文件而不给出提示</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>与 <strong>-f</strong> 选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答 <strong>y</strong> 时目标文件将被覆盖</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>除复制文件的内容外，还把修改时间和访问权限也复制到新文件中</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>不复制文件，只是生成链接文件</td>
+</tr>
+</tbody></table>
+<h1 id="课后实训"><a href="#课后实训" class="headerlink" title="课后实训"></a>课后实训</h1><p>实训任务：对linux进行基本的文件操作，对相关目录执行添加、删除、修改、创建。</p>
+<p>实验环境：kali虚拟机</p>
+<p>实训1：移动，创建目录</p>
+<ol>
+<li><p>在用户目录下创建两个文件夹名为test1、test2</p>
+</li>
+<li><p>进入test1文件夹创建一个文件名为hzvtc</p>
+</li>
+<li><p>进入test2文件夹创建一个文件名为名字缩写+学号</p>
+</li>
+<li><p>在hzvtc文件中添加名字缩写加学号</p>
+</li>
+<li><p>查看hzvtc文件</p>
+</li>
+<li><p>删除test2文件夹中的文件</p>
+</li>
+<li><p>查看用户目录底下的文件夹和文件</p>
+</li>
+<li><p>将hzvtc移动到test2中</p>
+</li>
+<li><p>将test2的hzvtc复制到test1中</p>
+</li>
+</ol>
+<p>拓展任务：</p>
+<ol>
+<li><p>查看test1中文件的权限</p>
+</li>
+<li><p>将test1中文件权限改为文件所有者可读写运行、群组可读写、匿名用户可读</p>
+</li>
+<li><p>直接删除test1文件夹</p>
+</li>
+<li><p>尝试用一条指令同时创建两个文件夹</p>
+</li>
+<li><p>尝试用一条指令同时执行两个操作 且其中一个不执行另一个执行失败</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">De1p</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/11/30/Linux%20Basic%20Operation(1)/">http://example.com/2021/11/30/Linux%20Basic%20Operation(1)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">De1p Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/Study/">Study</a></div><div class="post_share"><div class="social-share" data-image="/img/Linux%20Basic.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/11/30/PersonalDiary/"><img class="next-cover" src="/img/PersonalDiary.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">PersonalDiary</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">De1p</div><div class="author-info__description">欢迎来到De1p的博客</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/De1p"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic"><span class="toc-number">1.</span> <span class="toc-text">Basic</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E8%AF%AD%E5%8F%A5%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">一.基本操作语句介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E8%B7%AF%E5%BE%84%E6%8C%87%E4%BB%A4"><span class="toc-number">2.1.1.</span> <span class="toc-text">操作路径指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E8%B7%AF%E5%BE%84%E6%8C%87%E4%BB%A4-cd"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">移动路径指令(cd)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%96%87%E4%BB%B6%E6%8C%87%E4%BB%A4-ls"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">查看路径下文件指令(ls)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E6%8C%87%E4%BB%A4-touch"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">创建文件指令(touch)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%8C%87%E4%BB%A4-mkdir"><span class="toc-number">2.1.1.4.</span> <span class="toc-text">创建文件夹指令(mkdir)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">文件操作指令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.1.2.0.1.</span> <span class="toc-text">关于路径的基础知识</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E6%8C%87%E4%BB%A4-mv"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">移动文件指令(mv)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E6%8C%87%E4%BB%A4-cp"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">复制文件指令(cp)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E5%AE%9E%E8%AE%AD"><span class="toc-number">3.</span> <span class="toc-text">课后实训</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/11/30/Linux%20Basic%20Operation(1)/" title="Linux基本操作（1）"><img src="/img/Linux%20Basic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux基本操作（1）"/></a><div class="content"><a class="title" href="/2021/11/30/Linux%20Basic%20Operation(1)/" title="Linux基本操作（1）">Linux基本操作（1）</a><time datetime="2021-11-30T02:05:05.000Z" title="发表于 2021-11-30 10:05:05">2021-11-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/30/PersonalDiary/" title="PersonalDiary"><img src="/img/PersonalDiary.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PersonalDiary"/></a><div class="content"><a class="title" href="/2021/11/30/PersonalDiary/" title="PersonalDiary">PersonalDiary</a><time datetime="2021-11-29T16:00:00.000Z" title="发表于 2021-11-30 00:00:00">2021-11-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By De1p</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
